@@ -5,3 +5,7 @@ export function getDashboardPath(role?: string | null) {
   if (role === "vendor") return "/dashboard/vendor"
   return "/dashboard/customer"
 }
+
+export function getProfilePath(role?: string | null) {
+  return `${getDashboardPath(role)}/profile`
+}
