@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7f8"/>
+      <stop offset="0.55" stop-color="#fbe9ec"/>
+      <stop offset="1" stop-color="#f6dbe0"/>
+    </linearGradient>
+    <g id="flower">
+      <g fill="#d98a9c">
+        <ellipse cx="0" cy="-34" rx="18" ry="34"/>
+        <ellipse cx="0" cy="-34" rx="18" ry="34" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-34" rx="18" ry="34" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-34" rx="18" ry="34" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-34" rx="18" ry="34" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-34" rx="18" ry="34" transform="rotate(300)"/>
+      </g>
+      <circle r="16" fill="#fff3cf"/>
+    </g>
+    <path id="sparkle" d="M0-14C2-4 4-2 14 0 4 2 2 4 0 14-2 4-4 2-14 0-4-2-2-4 0-14z" fill="#c9a45c"/>
+  </defs>
+  <rect width="1440" height="700" fill="url(#bg)"/>
+  <circle cx="1180" cy="250" r="330" fill="#fff" opacity="0.45"/>
+  <circle cx="1180" cy="250" r="250" fill="#fff" opacity="0.5"/>
+  <path d="M960 700V330a220 220 0 0 1 440 0v370z" fill="#fff" opacity="0.7"/>
+  <path d="M1000 700V335a180 180 0 0 1 360 0v365z" fill="none" stroke="#c9a45c" stroke-width="3" opacity="0.7"/>
+  <g fill="none" stroke-width="10" opacity="0.9">
+    <circle cx="1130" cy="330" r="64" stroke="#9f4f63"/>
+    <circle cx="1220" cy="330" r="64" stroke="#c9a45c"/>
+  </g>
+  <path d="M1175 190l16 20-16 22-16-22z" fill="#9f4f63"/>
+  <g opacity="0.9">
+    <use href="#flower" transform="translate(1010 470) scale(1.1)"/>
+    <use href="#flower" transform="translate(1350 500) scale(0.9)"/>
+    <use href="#flower" transform="translate(1180 560) scale(1.3)"/>
+    <use href="#flower" transform="translate(840 610) scale(0.7)"/>
+  </g>
+  <g fill="#7ea58b" opacity="0.75">
+    <ellipse cx="1090" cy="545" rx="12" ry="30" transform="rotate(-50 1090 545)"/>
+    <ellipse cx="1275" cy="580" rx="12" ry="30" transform="rotate(50 1275 580)"/>
+    <ellipse cx="1285" cy="520" rx="10" ry="26" transform="rotate(30 1285 520)"/>
+  </g>
+  <use href="#sparkle" transform="translate(900 120) scale(1.2)"/>
+  <use href="#sparkle" transform="translate(1390 120)"/>
+  <use href="#sparkle" transform="translate(760 560) scale(0.8)"/>
+  <use href="#sparkle" transform="translate(1300 40) scale(0.7)"/>
+  <circle cx="120" cy="640" r="170" fill="#e7b6c0" opacity="0.35"/>
+  <circle cx="40" cy="80" r="110" fill="#c9a45c" opacity="0.18"/>
+</svg>
