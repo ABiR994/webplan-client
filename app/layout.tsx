@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Playfair_Display } from "next/font/google"
 
 import "./globals.css"
+import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -24,6 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         "antialiased",
         "font-sans",
@@ -31,7 +33,10 @@ export default function RootLayout({
         playfair.variable
       )}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Toaster />
+      </body>
     </html>
   )
 }
