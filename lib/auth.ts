@@ -1,5 +1,6 @@
 import { betterAuth } from "better-auth"
 import { APIError, createAuthMiddleware } from "better-auth/api"
+import { jwt } from "better-auth/plugins"
 import { mongodbAdapter } from "@better-auth/mongo-adapter"
 import { MongoClient } from "mongodb"
 
@@ -10,6 +11,7 @@ const passwordRule = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, { client }),
+  plugins: [jwt({ jwt: { definePayload: () => ({}) } })],
   emailAndPassword: {
     enabled: true,
     minPasswordLength: 6,

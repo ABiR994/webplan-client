@@ -126,7 +126,11 @@ export default async function ServiceDetailsPage({
               </div>
             ) : null}
 
-            <BookingPanel serviceId={service._id} vendorId={service.vendorId} />
+            <BookingPanel
+              serviceId={service._id}
+              serviceName={service.serviceName}
+              vendorId={service.vendorId}
+            />
           </div>
         </aside>
       </div>

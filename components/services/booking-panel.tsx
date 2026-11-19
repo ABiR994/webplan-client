@@ -1,16 +1,17 @@
 "use client"
 
 import Link from "next/link"
-import { CalendarCheck } from "lucide-react"
-
-import { Button, buttonVariants } from "@/components/ui/button"
+import { BookingFormDialog } from "@/components/services/booking-form-dialog"
+import { buttonVariants } from "@/components/ui/button"
 import { useSession } from "@/lib/auth-client"
 
 export function BookingPanel({
   serviceId,
+  serviceName,
   vendorId,
 }: {
   serviceId: string
+  serviceName: string
   vendorId: string
 }) {
   const { data: session, isPending } = useSession()
@@ -41,12 +42,7 @@ export function BookingPanel({
   }
 
   if (role === "customer") {
-    return (
-      <Button size="lg" className="h-11 w-full" disabled>
-        <CalendarCheck aria-hidden />
-        Request Booking
-      </Button>
-    )
+    return <BookingFormDialog serviceId={serviceId} serviceName={serviceName} />
   }
 
   const message =
