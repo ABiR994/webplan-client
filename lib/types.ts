@@ -13,6 +13,12 @@ export type Service = {
   }
 }
 
+export type ServiceDetails = Service & {
+  description: string
+  vendorId: string
+  createdAt: string
+}
+
 export type CategoryCount = {
   _id: string
   count: number
