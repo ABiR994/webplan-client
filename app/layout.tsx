@@ -1,0 +1,37 @@
+import type { Metadata } from "next"
+import { Geist, Playfair_Display } from "next/font/google"
+
+import "./globals.css"
+import { cn } from "@/lib/utils"
+
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+})
+
+export const metadata: Metadata = {
+  title: "WedPlan",
+  description: "Discover wedding services and book trusted vendors.",
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html
+      lang="en"
+      className={cn(
+        "antialiased",
+        "font-sans",
+        geist.variable,
+        playfair.variable
+      )}
+    >
+      <body>{children}</body>
+    </html>
+  )
+}
