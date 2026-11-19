@@ -9,3 +9,10 @@ export function getDashboardPath(role?: string | null) {
 export function getProfilePath(role?: string | null) {
   return `${getDashboardPath(role)}/profile`
 }
+
+export function getRedirectParam() {
+  const value = new URLSearchParams(window.location.search).get("redirect")
+  return value && value.startsWith("/") && !value.startsWith("//")
+    ? value
+    : null
+}

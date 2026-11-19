@@ -5,7 +5,7 @@ import { toast } from "sonner"
 
 import { AuthForm, type AuthFormData } from "@/components/auth-form"
 import { authClient } from "@/lib/auth-client"
-import { getDashboardPath } from "@/lib/routes"
+import { getDashboardPath, getRedirectParam } from "@/lib/routes"
 import { uploadImage } from "@/lib/upload"
 
 export default function SignUpPage() {
@@ -38,14 +38,14 @@ export default function SignUpPage() {
     }
 
     toast.success("Account created successfully")
-    router.push(getDashboardPath(result?.user.role))
+    router.push(getRedirectParam() ?? getDashboardPath(result?.user.role))
     router.refresh()
   }
 
   async function handleGoogle() {
     const { error } = await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/dashboard",
+      callbackURL: getRedirectParam() ?? "/dashboard",
     })
     if (error) toast.error(error.message || "Google sign in failed")
   }
