@@ -32,6 +32,19 @@ export type VendorService = {
   createdAt: string
 }
 
+export type BookingStatus = "pending" | "accepted" | "rejected" | "cancelled"
+
+export type VendorBooking = {
+  _id: string
+  eventDate: string
+  eventLocation: string
+  message: string
+  status: BookingStatus
+  createdAt: string
+  customer?: { name: string; email: string; image?: string }
+  service?: { serviceName: string; category: string; images: string[] }
+}
+
 export type CategoryCount = {
   _id: string
   count: number
