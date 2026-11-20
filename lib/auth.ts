@@ -41,6 +41,11 @@ export const auth = betterAuth({
   },
   hooks: {
     before: createAuthMiddleware(async (ctx) => {
+      if (ctx.path === "/update-user") {
+        throw new APIError("FORBIDDEN", {
+          message: "Profiles are updated through the WedPlan API",
+        })
+      }
       if (ctx.path !== "/sign-up/email") return
       if (!passwordRule.test(ctx.body?.password ?? "")) {
         throw new APIError("BAD_REQUEST", {
