@@ -45,6 +45,24 @@ export type VendorBooking = {
   service?: { serviceName: string; category: string; images: string[] }
 }
 
+export type CustomerBooking = {
+  _id: string
+  serviceId: string
+  eventDate: string
+  eventLocation: string
+  message: string
+  status: BookingStatus
+  createdAt: string
+  service?: {
+    serviceName: string
+    category: string
+    images: string[]
+    price: number
+    location: string
+  }
+  vendor?: { name: string; businessName?: string; image?: string }
+}
+
 export type CategoryCount = {
   _id: string
   count: number

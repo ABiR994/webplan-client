@@ -14,32 +14,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { apiFetch } from "@/lib/api-client"
+import {
+  BOOKING_FILTERS,
+  BOOKING_STATUS_STYLES,
+  formatBookingDate,
+} from "@/lib/booking"
 import type { BookingStatus, VendorBooking } from "@/lib/types"
 import { cn } from "@/lib/utils"
-
-const STATUS_STYLES: Record<BookingStatus, string> = {
-  pending: "bg-amber-100 text-amber-800",
-  accepted: "bg-green-100 text-green-800",
-  rejected: "bg-red-100 text-red-800",
-  cancelled: "bg-muted text-muted-foreground",
-}
-
-const FILTERS: ("all" | BookingStatus)[] = [
-  "all",
-  "pending",
-  "accepted",
-  "rejected",
-  "cancelled",
-]
-
-const formatDate = (value: string, withYear = true) =>
-  new Date(
-    value.length === 10 ? `${value}T00:00:00` : value
-  ).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    ...(withYear && { year: "numeric" }),
-  })
 
 type State = { attempt: number; error?: string }
 
@@ -113,7 +94,7 @@ export function BookingRequests() {
       </p>
 
       <div className="mt-5 flex flex-wrap gap-2">
-        {FILTERS.map((item) => (
+        {BOOKING_FILTERS.map((item) => (
           <button
             key={item}
             type="button"
@@ -189,7 +170,7 @@ export function BookingRequests() {
                   <span
                     className={cn(
                       "rounded-full px-3 py-1 text-xs font-medium capitalize",
-                      STATUS_STYLES[booking.status]
+                      BOOKING_STATUS_STYLES[booking.status]
                     )}
                   >
                     {booking.status}
@@ -228,7 +209,7 @@ export function BookingRequests() {
                       aria-hidden
                       className="size-4 shrink-0 text-primary"
                     />
-                    {formatDate(booking.eventDate)}
+                    {formatBookingDate(booking.eventDate)}
                   </p>
                   <p className="flex items-center gap-2">
                     <MapPin
@@ -245,7 +226,7 @@ export function BookingRequests() {
 
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <p className="text-xs text-muted-foreground">
-                    Requested on {formatDate(booking.createdAt)}
+                    Requested on {formatBookingDate(booking.createdAt)}
                   </p>
                   {booking.status === "pending" ? (
                     <div className="flex gap-2">
