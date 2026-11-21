@@ -5,7 +5,14 @@ import { auth } from "@/lib/auth"
 import { getDashboardPath, type Role } from "@/lib/routes"
 
 export async function getSession() {
-  return auth.api.getSession({ headers: await headers() })
+  const requestHeaders = await headers()
+
+  try {
+    return await auth.api.getSession({ headers: requestHeaders })
+  } catch {
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    return auth.api.getSession({ headers: requestHeaders })
+  }
 }
 
 export async function requireRole(role: Role) {

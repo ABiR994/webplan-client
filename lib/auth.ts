@@ -2,10 +2,8 @@ import { betterAuth } from "better-auth"
 import { APIError, createAuthMiddleware } from "better-auth/api"
 import { jwt } from "better-auth/plugins"
 import { mongodbAdapter } from "@better-auth/mongo-adapter"
-import { MongoClient } from "mongodb"
 
-const client = new MongoClient(process.env.MONGODB_URI as string)
-const db = client.db("wedplandb")
+import { client, db } from "@/lib/db"
 
 const passwordRule = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/
 
