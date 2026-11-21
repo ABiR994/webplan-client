@@ -15,20 +15,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { apiFetch } from "@/lib/api-client"
+import { formatPrice, SERVICE_STATUS_STYLES } from "@/lib/service"
 import type { VendorService } from "@/lib/types"
 import { cn } from "@/lib/utils"
-
-const priceFormat = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-})
-
-const STATUS_STYLES = {
-  pending: "bg-amber-100 text-amber-800",
-  approved: "bg-green-100 text-green-800",
-  rejected: "bg-red-100 text-red-800",
-} as const
 
 function getVisibility(service: VendorService) {
   if (service.status === "rejected") return "Rejected. Edit and resubmit."
@@ -196,14 +185,14 @@ export function MyServices() {
                     <p className="text-sm text-muted-foreground">
                       {service.category} · {service.location} ·{" "}
                       <span className="font-medium text-primary">
-                        {priceFormat.format(service.price)}
+                        {formatPrice(service.price)}
                       </span>
                     </p>
                   </div>
                   <span
                     className={cn(
                       "rounded-full px-3 py-1 text-xs font-medium capitalize",
-                      STATUS_STYLES[service.status]
+                      SERVICE_STATUS_STYLES[service.status]
                     )}
                   >
                     {service.status}
@@ -275,7 +264,7 @@ export function MyServices() {
               <DialogTitle>{viewing.serviceName}</DialogTitle>
               <DialogDescription>
                 {viewing.category} · {viewing.location} ·{" "}
-                {priceFormat.format(viewing.price)}
+                {formatPrice(viewing.price)}
               </DialogDescription>
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {viewing.images.map((image) => (

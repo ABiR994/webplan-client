@@ -84,6 +84,10 @@ export type AdminUserDetails = AdminUser & {
   }
 }
 
+export type AdminService = VendorService & {
+  vendor?: { name: string; businessName?: string; email: string }
+}
+
 export type CategoryCount = {
   _id: string
   count: number
