@@ -63,6 +63,27 @@ export type CustomerBooking = {
   vendor?: { name: string; businessName?: string; image?: string }
 }
 
+export type AdminUser = {
+  _id: string
+  name: string
+  email: string
+  image?: string
+  role: "customer" | "vendor" | "admin"
+  isBlocked?: boolean
+  businessName?: string
+  subscriptionPlan?: "free" | "premium"
+  subscriptionExpiresAt?: string
+  createdAt: string
+}
+
+export type AdminUserDetails = AdminUser & {
+  stats: {
+    totalServices?: number
+    totalBookingRequests?: number
+    totalBookings?: number
+  }
+}
+
 export type CategoryCount = {
   _id: string
   count: number
