@@ -1,8 +1,19 @@
 import type { ReactNode } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { redirect } from "next/navigation"
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+import { getDashboardPath } from "@/lib/routes"
+import { getSession } from "@/lib/session"
+
+export default async function AuthLayout({
+  children,
+}: {
+  children: ReactNode
+}) {
+  const session = await getSession()
+  if (session) redirect(getDashboardPath(session.user.role))
+
   return (
     <div className="flex min-h-svh flex-col items-center bg-gradient-to-b from-secondary to-white px-4 py-8 sm:py-12">
       <Link href="/" className="flex items-center gap-2">

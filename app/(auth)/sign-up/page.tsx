@@ -39,7 +39,6 @@ export default function SignUpPage() {
 
     toast.success("Account created successfully")
     router.push(getRedirectParam() ?? getDashboardPath(result?.user.role))
-    router.refresh()
   }
 
   async function handleGoogle() {

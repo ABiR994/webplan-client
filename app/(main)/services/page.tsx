@@ -1,6 +1,9 @@
+import type { Metadata } from "next"
 import { Suspense } from "react"
 
 import { ServiceBrowser } from "@/components/services/service-browser"
+
+export const metadata: Metadata = { title: "Browse Services" }
 
 export default function ServicesPage() {
   return (

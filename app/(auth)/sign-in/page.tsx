@@ -24,7 +24,6 @@ export default function SignInPage() {
 
     toast.success("Signed in successfully")
     router.push(getRedirectParam() ?? getDashboardPath(result?.user.role))
-    router.refresh()
   }
 
   async function handleGoogle() {

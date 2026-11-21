@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "WedPlan",
+  title: { default: "WedPlan", template: "%s | WedPlan" },
   description: "Discover wedding services and book trusted vendors.",
 }
 
