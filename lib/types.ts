@@ -88,6 +88,21 @@ export type AdminService = VendorService & {
   vendor?: { name: string; businessName?: string; email: string }
 }
 
+export type Transaction = {
+  _id: string
+  plan: string
+  amount: number
+  currency: string
+  status: string
+  createdAt: string
+  vendor?: {
+    name: string
+    businessName?: string
+    email: string
+    image?: string
+  }
+}
+
 export type CategoryCount = {
   _id: string
   count: number
