@@ -1,8 +1,24 @@
 import { NextResponse } from "next/server"
 
+import { auth } from "@/lib/auth"
+
 const MAX_SIZE = 5 * 1024 * 1024
 
 export async function POST(request: Request) {
+  const session = await auth.api.getSession({ headers: request.headers })
+  if (!session) {
+    return NextResponse.json(
+      { error: "Please sign in to upload images" },
+      { status: 401 }
+    )
+  }
+  if (session.user.isBlocked) {
+    return NextResponse.json(
+      { error: "Your account is blocked" },
+      { status: 403 }
+    )
+  }
+
   const formData = await request.formData()
   const file = formData.get("image")
 
